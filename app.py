@@ -14,10 +14,15 @@ st.set_page_config(
 # ----------------------------
 # Load Dataset
 # ----------------------------
+import os
+import pandas as pd
+import streamlit as st
+
 @st.cache_data
 def load_data():
-    df = pd.read_csv("C:/Users/Ujjwal/Desktop/github work/Population-Analysis-pro/population_by_country_2020.csv")
-    return df
+    base_dir = os.path.dirname(os.path.abspath(__file__))
+    file_path = os.path.join(base_dir, "population_by_country_2020.csv")
+    return pd.read_csv(file_path)
 
 df = load_data()
 
